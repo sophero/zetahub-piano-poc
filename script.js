@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   // Load ZetaHub P13N.js library
-  var SITEID='souremedia-dev'; // DEV
+  var SITEID='sourcemedia-dev'; // DEV
   // var SITEID='sourcemedia-prod'; // PROD
   (function(b, t, r, a, i, n) {
      b['bt']=b['bt'] || function() {
