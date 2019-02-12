@@ -39,9 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
           'track',
           'signed_up',
           { email },
-          { onComplete: function() { console.log(`BT track request completed`); }},
-          { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }},
-          { onFailure: function(err) { console.log(`ZETA: An error occured: ${err}`); }});
+          {
+            onComplete: function() { console.log(`BT track request completed`); },
+            onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); },
+            onFailure: function(err) { console.log(`ZETA: An error occured: ${err}`); }
+          }
+        );
+
         break;
     }
   }]);
