@@ -21,38 +21,27 @@ document.addEventListener("DOMContentLoaded", function() {
   );
 
   // Set up Piano callbacks.
-  // Uses code from https://docs.piano.io/how-to-create-a-newsletter-signup-with-templates/#customngform
   tp = window.tp || [];
   tp.push(["addHandler", "customEvent", function(event) {
     switch (event.eventName) {
       case 'email-signup':
-        console.log('received email customcheckout event');
         var email = '';
         var params;
 
-        // We are parsing the params object sent from the template to find out which iframe triggered it
+        // Parse params object and obtain email
         params = JSON.parse(event.params.params);
-        console.log('params:', params)
+        console.log('params:', params);
         if ((typeof event.params.email != 'undefined') && (event.params.email.length > 0)) {
             email = event.params.email;
         }
-        // check the email
-        console.log('email:', email);
-        // check for bt object
-        console.dir('bt:', bt);
         // pass the relevant data to ZetaHub. Invoke p13n library's track function.
         bt(
           'track',
           'signed_up',
           { email },
-          { onComplete: function() { console.log(`BT track request completed`); }});
-        // Trying with track
-        bt(
-          'updateUser',
-          { email },
-          { onComplete: function() { console.log(`BT updateUser request completed`); }}
-        );
-        //   // { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }});
+          { onComplete: function() { console.log(`BT track request completed`); }},
+          { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }},
+          { onFailure: function(err) { console.log(`ZETA: An error occured: ${err}`); }});
         break;
     }
   }]);
