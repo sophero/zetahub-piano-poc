@@ -36,12 +36,16 @@ document.addEventListener("DOMContentLoaded", function() {
         if ((typeof event.params.email != 'undefined') && (event.params.email.length > 0)) {
             email = event.params.email;
         }
+
+        // check for bt object
+        console.log('bt:', bt);
         // pass the relevant data to ZetaHub. Invoke p13n library's track function.
         bt(
           'track',
           'signed_up',
           { email },
-          { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }});
+          { onComplete: function() { console.log(`BT request completed`); }});
+          // { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }});
         break;
     }
   }]);
