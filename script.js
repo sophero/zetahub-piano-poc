@@ -41,11 +41,16 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('bt:', bt);
         // pass the relevant data to ZetaHub. Invoke p13n library's track function.
         bt(
-          'track',
-          'signed_up',
+          'updateUser',
           { email },
-          { onComplete: function() { console.log(`BT request completed`); }});
-          // { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }});
+          { onComplete: function() { console.log(`BT request completed`); }}
+        );
+        // bt(
+        //   'track',
+        //   'signed_up',
+        //   { email },
+        //   { onComplete: function() { console.log(`BT request completed`); }});
+        //   // { onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); }});
         break;
     }
   }]);
