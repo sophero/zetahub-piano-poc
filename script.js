@@ -20,33 +20,33 @@ document.addEventListener("DOMContentLoaded", function() {
      'https://cdn.boomtrain.com/p13n/'+SITEID+'/p13n.js'
   );
 
-  // Set up Piano custom event handler and Zeta callbacks.
-  tp = window.tp || [];
-  tp.push(["addHandler", "customEvent", function(event) {
-    switch (event.eventName) {
-      case 'email-signup':
-        var email = '';
-        var params;
+  // // Set up Piano custom event handler and Zeta callbacks.
+  // tp = window.tp || [];
+  // tp.push(["addHandler", "customEvent", function(event) {
+  //   switch (event.eventName) {
+  //     case 'email-signup':
+  //       var email = '';
+  //       var params;
 
-        // Parse params object and obtain email address
-        params = JSON.parse(event.params.params);
-        console.log('params:', params);
-        if ((typeof event.params.email != 'undefined') && (event.params.email.length > 0)) {
-            email = event.params.email;
-        }
-        // Pass the relevant data to ZetaHub by invoking p13n library's track function.
-        bt(
-          'track',
-          'signed_up',
-          { email },
-          {
-            onComplete: function() { console.log(`BT track request completed`); },
-            onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); },
-            onFailure: function(err) { console.log(`ZETA: An error occurred: ${err}`); }
-          }
-        );
+  //       // Parse params object and obtain email address
+  //       params = JSON.parse(event.params.params);
+  //       console.log('params:', params);
+  //       if ((typeof event.params.email != 'undefined') && (event.params.email.length > 0)) {
+  //           email = event.params.email;
+  //       }
+  //       // Pass the relevant data to ZetaHub by invoking p13n library's track function.
+  //       bt(
+  //         'track',
+  //         'signed_up',
+  //         { email },
+  //         {
+  //           onComplete: function() { console.log(`BT track request completed`); },
+  //           onSuccess: function() { console.log(`ZETA: User ${email} successfully signed up`); },
+  //           onFailure: function(err) { console.log(`ZETA: An error occurred: ${err}`); }
+  //         }
+  //       );
 
-        break;
-    }
-  }]);
+  //       break;
+  //   }
+  // }]);
 });
